@@ -37,7 +37,7 @@ class _DashBoardState extends State<DashBoard> {
     if (_currentTab == 1) currentScreen = const SearchProperties();
     if (_currentTab == 2) currentScreen = const Wishlist();
     if (_currentTab == 4) currentScreen = const Profile();
-    title = 'Hello, John Smith';
+    title = 'Hello, Ogola Ogola';
     super.initState();
   }
 
@@ -51,12 +51,7 @@ class _DashBoardState extends State<DashBoard> {
         bottomNavigationBar: customBottomNavigationBar(),
         body: Column(
           children: [
-            Expanded(
-              child: PageStorage(
-                bucket: bucket,
-                child: currentScreen,
-              ),
-            ),
+            Expanded(child: PageStorage(bucket: bucket, child: currentScreen)),
           ],
         ),
       ),
@@ -77,14 +72,17 @@ class _DashBoardState extends State<DashBoard> {
                 setState(() {
                   currentScreen = const Home();
                   _currentTab = 0;
-                  title = 'Hello, John Smith';
+                  title = 'Hello, Ogola Ogola';
                 });
               },
               child: SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.20,
-                  height: 20,
-                  child: SvgPicture.asset('assets/icons/home.svg',
-                      color: _currentTab == 0 ? primaryColor : Colors.grey)),
+                width: MediaQuery.of(context).size.width * 0.20,
+                height: 20,
+                child: SvgPicture.asset(
+                  'assets/icons/home.svg',
+                  color: _currentTab == 0 ? primaryColor : Colors.grey,
+                ),
+              ),
             ),
             GestureDetector(
               onTap: () {
@@ -95,10 +93,13 @@ class _DashBoardState extends State<DashBoard> {
                 });
               },
               child: SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.20,
-                  height: 20,
-                  child: SvgPicture.asset('assets/icons/building.svg',
-                      color: _currentTab == 1 ? primaryColor : Colors.grey)),
+                width: MediaQuery.of(context).size.width * 0.20,
+                height: 20,
+                child: SvgPicture.asset(
+                  'assets/icons/building.svg',
+                  color: _currentTab == 1 ? primaryColor : Colors.grey,
+                ),
+              ),
             ),
             GestureDetector(
               onTap: () {
@@ -109,10 +110,13 @@ class _DashBoardState extends State<DashBoard> {
                 });
               },
               child: SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.20,
-                  height: 20,
-                  child: SvgPicture.asset('assets/icons/heart.svg',
-                      color: _currentTab == 2 ? primaryColor : Colors.grey)),
+                width: MediaQuery.of(context).size.width * 0.20,
+                height: 20,
+                child: SvgPicture.asset(
+                  'assets/icons/heart.svg',
+                  color: _currentTab == 2 ? primaryColor : Colors.grey,
+                ),
+              ),
             ),
             GestureDetector(
               onTap: () {
@@ -123,10 +127,13 @@ class _DashBoardState extends State<DashBoard> {
                 });
               },
               child: SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.20,
-                  height: 20,
-                  child: SvgPicture.asset('assets/icons/chat.svg',
-                      color: _currentTab == 3 ? primaryColor : Colors.grey)),
+                width: MediaQuery.of(context).size.width * 0.20,
+                height: 20,
+                child: SvgPicture.asset(
+                  'assets/icons/chat.svg',
+                  color: _currentTab == 3 ? primaryColor : Colors.grey,
+                ),
+              ),
             ),
             GestureDetector(
               onTap: () {
@@ -137,10 +144,13 @@ class _DashBoardState extends State<DashBoard> {
                 });
               },
               child: SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.20,
-                  height: 20,
-                  child: SvgPicture.asset('assets/icons/profile.svg',
-                      color: _currentTab == 4 ? primaryColor : Colors.grey)),
+                width: MediaQuery.of(context).size.width * 0.20,
+                height: 20,
+                child: SvgPicture.asset(
+                  'assets/icons/profile.svg',
+                  color: _currentTab == 4 ? primaryColor : Colors.grey,
+                ),
+              ),
             ),
           ],
         ),
@@ -152,32 +162,29 @@ class _DashBoardState extends State<DashBoard> {
   AppBar customAppBar() {
     return AppBar(
       backgroundColor: Colors.white,
-      title: Text(
-        title!,
-        style: const TextStyle(color: Colors.black),
-      ),
+      title: Text(title!, style: const TextStyle(color: Colors.black)),
       leading: GestureDetector(
         onTap: () => _drawerKey.currentState!.openDrawer(),
         child: Container(
-            height: 40,
-            width: 40,
-            padding: const EdgeInsets.all(8.0),
-            margin: const EdgeInsets.all(8.0),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0), color: Colors.white),
-            child: Padding(
-              padding: const EdgeInsets.all(0.0),
-              child: SvgPicture.asset(
-                'assets/icons/menu.svg',
-                color: const Color(0xff979696),
-                height: 20,
-              ),
-            )),
+          height: 40,
+          width: 40,
+          padding: const EdgeInsets.all(8.0),
+          margin: const EdgeInsets.all(8.0),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10.0),
+            color: Colors.white,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(0.0),
+            child: SvgPicture.asset(
+              'assets/icons/menu.svg',
+              color: const Color(0xff979696),
+              height: 20,
+            ),
+          ),
+        ),
       ),
-      actions: [
-        locationIcon(context),
-        notificationIcon(context),
-      ],
+      actions: [locationIcon(context), notificationIcon(context)],
       systemOverlayStyle: SystemUiOverlayStyle.dark,
     );
   }
